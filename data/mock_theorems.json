@@ -1,0 +1,8 @@
+[
+  {"theorem_id": "thm_add_comm", "oracle_steps": ["intro a", "intro b", "rw [Nat.add_comm]", "refl"]},
+  {"theorem_id": "thm_mul_comm", "oracle_steps": ["intro a", "intro b", "rw [Nat.mul_comm]", "refl"]},
+  {"theorem_id": "thm_add_assoc", "oracle_steps": ["intro a", "intro b", "intro c", "rw [Nat.add_assoc]", "refl"]},
+  {"theorem_id": "thm_mul_one", "oracle_steps": ["intro a", "simp"]},
+  {"theorem_id": "thm_add_zero", "oracle_steps": ["intro a", "simp"]},
+  {"theorem_id": "thm_le_refl", "oracle_steps": ["intro a", "apply le_rfl"]}
+]

@@ -1,0 +1,893 @@
+[
+  {
+    "theorem_id": "thm_add_comm_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_zero_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "simp"
+    ]
+  },
+  {
+    "theorem_id": "thm_zero_add_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "simp"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_one_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "simp"
+    ]
+  },
+  {
+    "theorem_id": "thm_one_mul_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "simp"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_0",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_1",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_2",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_3",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_4",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_5",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_6",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_7",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_8",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_9",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_10",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_11",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_12",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_13",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_14",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_15",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_16",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_17",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_18",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_19",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_20",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_21",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_22",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_23",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_24",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_25",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_26",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_27",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_28",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_29",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_30",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_31",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_32",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_33",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_34",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_35",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_36",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_37",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_38",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_39",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_40",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_41",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_42",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_43",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_44",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_45",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_46",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_47",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_48",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_49",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_50",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_51",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_assoc_52",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.mul_assoc]",
+        "rw Nat.mul_assoc",
+        "rewrite Nat.mul_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_53",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_54",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_55",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_56",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_mul_comm_57",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.mul_comm]",
+        "rw Nat.mul_comm",
+        "rewrite Nat.mul_comm"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_assoc_58",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      "intro c",
+      [
+        "rw [Nat.add_assoc]",
+        "rw Nat.add_assoc",
+        "rewrite Nat.add_assoc"
+      ],
+      "refl"
+    ]
+  },
+  {
+    "theorem_id": "thm_add_comm_59",
+    "oracle_steps": [
+      "intro a",
+      "intro b",
+      [
+        "rw [Nat.add_comm]",
+        "rw Nat.add_comm",
+        "rewrite Nat.add_comm"
+      ],
+      "refl"
+    ]
+  }
+]

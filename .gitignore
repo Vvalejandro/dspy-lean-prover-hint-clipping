@@ -1,0 +1,12 @@
+.venv/
+.venv_run/
+.pytest_cache/
+__pycache__/
+.env
+run.log
+*.pyc
+.DS_Store
+
+# Datasets and outputs (keep generated large shards out of the repo by default)
+data/large/
+

@@ -1,0 +1,8 @@
+dspy-ai>=3.0.0
+typer>=0.12.3
+rich>=13.7.1
+ujson>=5.9.0
+# Optional; only needed if running against real Lean/LeanDojo
+lean-dojo>=0.2.0
+python-dotenv>=1.0.1
+pytest>=8.2.0
