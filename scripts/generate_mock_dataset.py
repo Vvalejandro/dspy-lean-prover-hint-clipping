@@ -20,7 +20,9 @@ def variants_rw(lemma: str) -> List[str]:
     ]
 
 
-def build_examples(n_seed: int = 42) -> List[Dict[str, Union[str, List[Union[str, List[str]]]]]]:
+def build_examples(
+    n_seed: int = 42
+) -> List[Dict[str, Union[str, List[Union[str, List[str]]]]]]:
     rng = random.Random(n_seed)
 
     examples = []
@@ -65,13 +67,35 @@ def build_examples(n_seed: int = 42) -> List[Dict[str, Union[str, List[Union[str
     return examples
 
 
-def main():
+def main(noise_level: float = 0.0):
+    """Generates a mock theorem dataset with optional noise."""
     out = Path("data/mock_theorems_v2.json")
     out.parent.mkdir(parents=True, exist_ok=True)
-    data = build_examples()
-    out.write_text(json.dumps(data, indent=2))
-    print(f"Wrote {len(data)} examples to {out}")
+    examples = build_examples()
+
+    noise_pool = [
+        "intro x",
+        "simp",
+        "refl",
+        "rw [Nat.add_comm]",
+        "rw [Nat.mul_comm]",
+        "sorry",
+    ]
+
+    for ex in examples:
+        original_steps = ex["oracle_steps"]
+        noisy_steps = []
+        for step in original_steps:
+            if random.random() < noise_level:
+                noisy_steps.append(random.choice(noise_pool))
+            else:
+                noisy_steps.append(step)
+        ex["noisy_oracle_steps"] = noisy_steps
+
+    out.write_text(json.dumps(examples, indent=2))
+    print(f"Wrote {len(examples)} examples to {out}")
 
 
 if __name__ == "__main__":
-    main()
+    import typer
+    typer.run(main)
