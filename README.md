@@ -155,6 +155,17 @@ python -m experiments.experiment --model openai/gpt-4o \
 - `--force-refine-p`: probability to force an incorrect proposal (exercises refine)
 - `--curated-train`, `--curated-size`: use easier ≤4-step items to stabilize compile
 - `--log-coverage`: log tactic-head histogram on a train sample
+- `--kl-weight`: weight for KL regularization metric
+- `--use-dataset-noise`: use noisy oracle steps from the dataset
+- `--ablation-3way`: run 3-way ablation (Clip vs KL vs Clip+KL)
+
+## 3-Way Ablation (Clip/KL)
+
+Run a 3-way ablation study comparing clipping, KL regularization, and both.
+
+```
+python -m experiments.experiment --ablation-3way --kl-weight 0.1
+```
 
 ## Why Clipping Helps
 
