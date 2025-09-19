@@ -15,6 +15,12 @@ def test_maybe_clip_modes():
     assert maybe_clip(full, HintMode.none) is None
 
 
+def test_scale_hint_clipped_threshold():
+    h = "rewrite Nat.add_comm"
+    assert scale_hint(h, HintMode.clipped, 1.0) == "rewrite"
+    assert scale_hint(h, HintMode.clipped, 0.51) == "rewrite"
+    assert scale_hint(h, HintMode.clipped, 0.49) is None
+
 def test_scale_hint_full_truncates_tokens():
     h = "rw [Nat.add_assoc] -- then refl"
     assert scale_hint(h, HintMode.full, 1.0) == h
@@ -28,6 +34,6 @@ def test_scale_hint_full_truncates_tokens():
 
 def test_scale_hint_clipped_threshold():
     h = "rewrite Nat.add_comm"
-    assert scale_hint(h, HintMode.clipped, 1.0) == "rw"
-    assert scale_hint(h, HintMode.clipped, 0.51) == "rw"
+    assert scale_hint(h, HintMode.clipped, 1.0) == "rewrite"
+    assert scale_hint(h, HintMode.clipped, 0.51) == "rewrite"
     assert scale_hint(h, HintMode.clipped, 0.49) is None

@@ -82,44 +82,37 @@ def select_curated(dicts: List[dict], max_len: int = 4) -> List[dict]:
     return curated
 
 
-def kl_metric(example, prediction, trace=None, prompt_callback=None, kl_weight=0.0):
+def kl_metric(example, prediction, trace=None, kl_weight=0.0, reference_lm=None):
     import dspy
     import numpy as np
-    from dspy_lean_prover.custom_lm import CustomLM
 
     accuracy = matches_oracle(prediction.proof, example.oracle_steps)
 
     if kl_weight == 0.0:
         return accuracy
 
-    # Get the last response from the history
-    last_response = dspy.settings.lm.history[-1] if dspy.settings.lm.history else None
-    if not last_response:
+    if not trace:
         return accuracy
 
     # Get the log-probabilities from the compiled program
-    compiled_logprobs = last_response["choices"][0].get("logprobs")
+    # This is still brittle, but it's the best I can do without more support from dspy
+    compiled_logprobs = dspy.settings.lm.history[-1]["choices"][0].get("logprobs") if dspy.settings.lm.history else None
 
-    # Get the prompt from the callback
-    prompt = prompt_callback.prompts[-1] if prompt_callback.prompts else None
-    if not prompt:
+    # Get the prompt from the trace
+    try:
+        prompt = trace[-1].prompt
+    except (IndexError, AttributeError):
         return accuracy
 
-    # Store the original LM
-    original_lm = dspy.settings.lm
 
-    # Create a reference model
-    reference_lm = CustomLM(model=original_lm.model, logprobs=True)
-    dspy.settings.configure(lm=reference_lm)
+    if not compiled_logprobs or not prompt:
+        return accuracy
 
     # Get the log-probabilities from the reference model
     reference_response = reference_lm(messages=prompt)
     reference_logprobs = reference_response.choices[0].logprobs
 
-    # Restore the original LM
-    dspy.settings.configure(lm=original_lm)
-
-    if not compiled_logprobs or not reference_logprobs:
+    if not reference_logprobs:
         return accuracy
 
     # Calculate a simplified KL divergence
@@ -241,14 +234,12 @@ def run(
 
     rprint(f"Train size: {len(trainset)} | Test size: {len(testset)}")
 
-    # Configure LM and Callbacks
+    # Configure LM
     from dspy_lean_prover.custom_lm import CustomLM
-    from dspy_lean_prover.callbacks import PromptCallback
-    prompt_callback = PromptCallback()
     dspy.settings.configure(
         lm=CustomLM(model=model if model != "mock" else "openai/gpt-3.5-turbo"),
-        callbacks=[prompt_callback],
     )
+    reference_lm = CustomLM(model=model if model != "mock" else "openai/gpt-3.5-turbo", logprobs=True)
 
     # Build oracle mapping for seeding stubs (train + test)
     oracle_by_id: Dict[str, List] = {}
@@ -288,7 +279,7 @@ def run(
 
         return _propose, _refine
 
-    def compile_and_eval(mode: HintMode, strength: float, prompt_callback=None, kl_weight=0.0) -> tuple[float, float, Dict[str, int], bool, List[int], List[int]]:
+    def compile_and_eval(mode: HintMode, strength: float, kl_weight=0.0, reference_lm=None) -> tuple[float, float, Dict[str, int], bool, List[int], List[int]]:
         if use_lean:
             prover = IterativeProver(
                 max_steps=steps,
@@ -313,7 +304,7 @@ def run(
         program = SolveWithIterativeProver(prover)
         if kl_weight > 0:
             from functools import partial
-            metric = partial(kl_metric, prompt_callback=prompt_callback, kl_weight=kl_weight)
+            metric = partial(kl_metric, kl_weight=kl_weight, reference_lm=reference_lm)
         else:
             metric = None
         tele = BootstrapFewShot(metric=metric)
@@ -351,8 +342,8 @@ def run(
         compile_successes = []
         proof_lengths = []
         for s in strengths:
-            tr_full, te_full, heads_full, cs_full, pl_full_tr, pl_full_te = compile_and_eval(HintMode.full, s, prompt_callback=prompt_callback, kl_weight=kl_weight)
-            tr_clip, te_clip, heads_clip, cs_clip, pl_clip_tr, pl_clip_te = compile_and_eval(HintMode.clipped, s, prompt_callback=prompt_callback, kl_weight=kl_weight)
+            tr_full, te_full, heads_full, cs_full, pl_full_tr, pl_full_te = compile_and_eval(HintMode.full, s, kl_weight=kl_weight, reference_lm=reference_lm)
+            tr_clip, te_clip, heads_clip, cs_clip, pl_clip_tr, pl_clip_te = compile_and_eval(HintMode.clipped, s, kl_weight=kl_weight, reference_lm=reference_lm)
             table.add_row(
                 f"{s:.2f}", f"{tr_full:.2f}", f"{te_full:.2f}", f"{tr_clip:.2f}", f"{te_clip:.2f}"
             )
@@ -374,14 +365,14 @@ def run(
         rprint("[bold]Running 3-way ablation…[/bold]")
 
         # 1. Clip-only
-        tr_clip, te_clip, _, _, _, _ = compile_and_eval(HintMode.clipped, hint_strength, prompt_callback=prompt_callback, kl_weight=0.0)
+        tr_clip, te_clip, _, _, _, _ = compile_and_eval(HintMode.clipped, hint_strength, kl_weight=0.0, reference_lm=reference_lm)
 
         # 2. KL-only
         kl_only_weight = kl_weight if kl_weight > 0 else 0.1
-        tr_kl, te_kl, _, _, _, _ = compile_and_eval(HintMode.none, 0.0, prompt_callback=prompt_callback, kl_weight=kl_only_weight)
+        tr_kl, te_kl, _, _, _, _ = compile_and_eval(HintMode.none, 0.0, kl_weight=kl_only_weight, reference_lm=reference_lm)
 
         # 3. Clip+KL
-        tr_clip_kl, te_clip_kl, _, _, _, _ = compile_and_eval(HintMode.clipped, hint_strength, prompt_callback=prompt_callback, kl_weight=kl_only_weight)
+        tr_clip_kl, te_clip_kl, _, _, _, _ = compile_and_eval(HintMode.clipped, hint_strength, kl_weight=kl_only_weight, reference_lm=reference_lm)
 
         table = Table(title="3-Way Ablation (Clip/KL)", show_header=True, header_style="bold")
         table.add_column("Condition")
@@ -395,9 +386,9 @@ def run(
 
     else:
         rprint("[bold]Compiling with FULL hints…[/bold]")
-        tr_full, te_full, heads_full, cs_full, pl_full_tr, pl_full_te = compile_and_eval(HintMode.full, hint_strength, prompt_callback=prompt_callback, kl_weight=kl_weight)
+        tr_full, te_full, heads_full, cs_full, pl_full_tr, pl_full_te = compile_and_eval(HintMode.full, hint_strength, kl_weight=kl_weight, reference_lm=reference_lm)
         rprint("[bold]Compiling with CLIPPED hints…[/bold]")
-        tr_clip, te_clip, heads_clip, cs_clip, pl_clip_tr, pl_clip_te = compile_and_eval(HintMode.clipped, hint_strength, prompt_callback=prompt_callback, kl_weight=kl_weight)
+        tr_clip, te_clip, heads_clip, cs_clip, pl_clip_tr, pl_clip_te = compile_and_eval(HintMode.clipped, hint_strength, kl_weight=kl_weight, reference_lm=reference_lm)
 
         table = Table(title="Oracle Hint Clipping (Train/Test)", show_header=True, header_style="bold")
         table.add_column("Condition")
